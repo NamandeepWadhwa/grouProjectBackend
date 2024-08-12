@@ -1,7 +1,6 @@
 const OTP = require('../models/otp');
 const otpService = require('../services/otpService');
 const sendMail = require('../utils/mailer');
-const getToken=require('../utils/strategy');
 const user = require('../models/user');
 const generateToken = require('../utils/strategy');
 

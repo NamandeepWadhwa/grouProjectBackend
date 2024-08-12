@@ -5,6 +5,7 @@ const User = require('../models/user');
 const upload = multer();
 
 router.get('/profile/:userId', async (req, res) => {
+    console.log(req.params.userId);
     const userId = req.params.userId;
     try {
          const user = await User.findById(userId).populate('posts activities');
