@@ -26,6 +26,7 @@ const createOTP = async (req, res) => {
     await newOTP.save();
     try {
       await sendMail(email, 'OTP Verification', `Your OTP is: ${otp}`);
+      console.log('Email sent successfully'); 
     } catch (error) {
       console.error('Error sending email:', error);
       return res.status(500).json({ error: 'Internal server error' });
