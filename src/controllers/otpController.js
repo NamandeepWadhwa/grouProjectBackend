@@ -5,7 +5,7 @@ const user = require('../models/user');
 const generateToken = require('../utils/strategy');
 
 const createOTP = async (req, res) => {
-  console.log(req.body);
+ 
   
   const { email } = req.body;
 
@@ -25,8 +25,12 @@ const createOTP = async (req, res) => {
     const newOTP = new OTP({ email, otp });
     await newOTP.save();
     try {
-      await sendMail(email, 'OTP Verification', `Your OTP is: ${otp}`);
-      console.log('Email sent successfully'); 
+      const isSent=await sendMail(email, 'OTP Verification', `Your OTP is: ${otp}`);
+      if(!isSent)return res.status(401).json({
+        messsage:
+          "Please note that the system is not working because the creator forgot to obtain a new refresh token, as OAuth requires one every 7 days. An update will be provided soon.",
+      });
+      
     } catch (error) {
       console.error('Error sending email:', error);
       return res.status(500).json({ error: 'Internal server error' });

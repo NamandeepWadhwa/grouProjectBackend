@@ -38,9 +38,12 @@ const transport = nodemailer.createTransport({
             subject,
             text
         });
+        return true;
+        
        
      
     } catch (error) {
+      return false;
         console.error('Error sending email:', error);
     }
 };
