@@ -43,8 +43,9 @@ const transport = nodemailer.createTransport({
        
      
     } catch (error) {
+      console.error("Error sending email:", error);
       return false;
-        console.error('Error sending email:', error);
+        
     }
 };
 

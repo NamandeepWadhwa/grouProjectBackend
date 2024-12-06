@@ -28,7 +28,7 @@ const createOTP = async (req, res) => {
       const isSent=await sendMail(email, 'OTP Verification', `Your OTP is: ${otp}`);
       if(!isSent)return res.status(401).json({
         messsage:
-          "Please note that the system is not working because the creator forgot to obtain a new refresh token, as OAuth requires one every 7 days. An update will be provided soon.",
+          "Please note that the system is not working because the developer forgot to obtain a new refresh token for google, as OAuth requires one every 7 days. An update will be provided soon.",
       });
       
     } catch (error) {
